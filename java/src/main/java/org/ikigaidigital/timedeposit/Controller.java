@@ -27,9 +27,8 @@ public class Controller {
         // Get all time deposit objects
         List<TimeDeposit> deposits = timeDepositRepository.findAll();
 
-        // iterate over them with for Each, rather than a generic for loop - as we don't need to break out of this as the READMe says update all balances
-        deposits.forEach(deposit -> deposit.setBalance(deposit.getBalance() * 1.50));
-
+        TimeDepositCalculator calculator = new TimeDepositCalculator();
+        calculator.updateBalance(deposits);
         //Save 'em
         return timeDepositRepository.saveAll(deposits);
     }
