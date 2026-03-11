@@ -18,7 +18,7 @@ public class TimeDeposit {
     @Column(nullable = false)
     private int days;
 
-    @OneToMany(mappedBy = "timeDeposit", cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "timeDeposit", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Withdrawal> withdrawals;
 
     public TimeDeposit(int id, String planType, Double balance, int days) {
@@ -27,8 +27,10 @@ public class TimeDeposit {
         this.balance = balance;
         this.days = days;
     }
+
     // No-args constructor required by JPA
-    public TimeDeposit() {}
+    public TimeDeposit() {
+    }
 
     public int getId() {
         return id;
