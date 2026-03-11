@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 public class TimeDepositCalculator {
-//Not  allowed to update method signature - but for readability I would have updated the xs to a different name something generic like
+    //Not  allowed to update method signature - but for readability I would have updated the xs to a different name something generic like
     // ListOfTimeDeposits
     public void updateBalance(List<TimeDeposit> xs) {
 
