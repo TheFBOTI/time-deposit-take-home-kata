@@ -2,8 +2,10 @@ package org.ikigaidigital.timedeposit;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "time_deposits")
+@Table(name = "timeDeposits")
 public class TimeDeposit {
 
     @Id
@@ -16,7 +18,8 @@ public class TimeDeposit {
     @Column(nullable = false)
     private int days;
 
-    // TODO add withdrawals
+    @OneToMany(mappedBy = "timeDeposit", cascade = CascadeType.ALL)
+    private List<Withdrawal> withdrawals;
 
     public TimeDeposit(int id, String planType, Double balance, int days) {
         this.id = id;
@@ -25,7 +28,9 @@ public class TimeDeposit {
         this.days = days;
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
     public String getPlanType() {
         return planType;
