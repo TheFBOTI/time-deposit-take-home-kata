@@ -1,6 +1,7 @@
 package org.ikigaidigital.timedeposit;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ public class Withdrawal {
     private int id;
     @ManyToOne
     @JoinColumn(name = "timeDepositId", nullable = false)
-    @JsonBackReference
+    @JsonIgnore
     private TimeDeposit timeDeposit;
     @Column(nullable = false)
     private BigDecimal amount;
@@ -30,8 +31,9 @@ public class Withdrawal {
         return id;
     }
 
-    public TimeDeposit getTimeDeposit() {
-        return timeDeposit;
+    @JsonProperty("timeDepositId")
+    public Integer getTimeDepositId() {
+        return (timeDeposit != null) ? timeDeposit.getId() : null;
     }
 
     public void setTimeDeposit(TimeDeposit timeDeposit) {
