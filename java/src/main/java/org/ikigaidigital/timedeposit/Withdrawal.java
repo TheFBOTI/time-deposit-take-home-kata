@@ -1,5 +1,6 @@
 package org.ikigaidigital.timedeposit;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -7,7 +8,7 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "withdrawals")
+@Table(name = "\"withdrawals\"")
 public class Withdrawal {
 
     @Id
@@ -15,6 +16,7 @@ public class Withdrawal {
     private int id;
     @ManyToOne
     @JoinColumn(name = "timeDepositId", nullable = false)
+    @JsonBackReference
     private TimeDeposit timeDeposit;
     @Column(nullable = false)
     private BigDecimal amount;

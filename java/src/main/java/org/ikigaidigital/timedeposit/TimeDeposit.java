@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "timeDeposits")
+@Table(name = "\"timeDeposits\"")
 public class TimeDeposit {
 
     @Id
@@ -18,7 +18,7 @@ public class TimeDeposit {
     @Column(nullable = false)
     private int days;
 
-    @OneToMany(mappedBy = "timeDeposit", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "timeDeposit", cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Withdrawal> withdrawals;
 
     public TimeDeposit(int id, String planType, Double balance, int days) {
