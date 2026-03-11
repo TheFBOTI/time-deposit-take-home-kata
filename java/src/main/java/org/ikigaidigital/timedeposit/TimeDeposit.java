@@ -27,7 +27,7 @@ public class TimeDeposit {
         this.balance = balance;
         this.days = days;
     }
-    // ✅ No-args constructor required by JPA
+    // No-args constructor required by JPA
     public TimeDeposit() {}
 
     public int getId() {

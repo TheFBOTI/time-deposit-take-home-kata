@@ -13,24 +13,24 @@ public class TimeDepositCalculatorTest {
 
     @Test
     public void updateBalance_BasicPlan_CalculatesInterest() {
-        // Arrange: 1000 * 0.01 / 12 = 0.83333... -> Round down = 0.83
+        // Arrange
         TimeDeposit basicPlan = new TimeDeposit(1, "basic", 1000.00, 45);
         List<TimeDeposit> plans = Collections.singletonList(basicPlan);
 
         // Act
         calc.updateBalance(plans);
 
-        // Assert: 1000.00 + 0.83 = 1000.83
+        // Assert
         assertThat(basicPlan.getBalance()).isCloseTo(1000.83, within(0.001));
 
-        // Arrange: 1,234,567.00 * 0.01 / 12 = 1028.8058... -> Round Half Up = 1028.81
+        // Arrange
         basicPlan = new TimeDeposit(1, "basic",  1234567.00, 45);
         plans = Collections.singletonList(basicPlan);
 
         // Act
         calc.updateBalance(plans);
 
-        // Assert: 100.00 + 1028.81 = 1235595.81
+        // Assert
         assertThat(basicPlan.getBalance()).isCloseTo(1235595.81, within(0.001));
     }
 
@@ -46,7 +46,7 @@ public class TimeDepositCalculatorTest {
         assertThat(student.getBalance()).isEqualTo(1002.50);
 
 
-        // Arrange: 1234567.00.81 * 0.03 / 12 = 2.50
+        // Arrange
         student = new TimeDeposit(2, "student", 1234567.00, 31);
 
         // Act
@@ -59,7 +59,7 @@ public class TimeDepositCalculatorTest {
 
     @Test
     public void updateBalance_StudentPlan_OverOneYear_DoNotCalculateInterest() {
-        // Arrange: 1000 * 0.03 / 12 = 2.50
+        // Arrange
         TimeDeposit student = new TimeDeposit(2, "student", 1000.00, 400);
 
         // Act
@@ -69,7 +69,7 @@ public class TimeDepositCalculatorTest {
         assertThat(student.getBalance()).isEqualTo(1000.00);
 
 
-        // Arrange: 1234567.00.81 * 0.03 / 12 = 2.50
+        // Arrange
         student = new TimeDeposit(2, "student", 1234567.00, 400);
 
         // Act

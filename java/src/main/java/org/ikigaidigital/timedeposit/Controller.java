@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,12 +23,11 @@ public class Controller {
 
     @PostMapping("/updatebalances")
     public List<TimeDeposit> updateAllBalances() {
-        // Get all time deposit objects
         List<TimeDeposit> deposits = timeDepositRepository.findAll();
 
         TimeDepositCalculator calculator = new TimeDepositCalculator();
         calculator.updateBalance(deposits);
-        //Save 'em
+
         return timeDepositRepository.saveAll(deposits);
     }
 
