@@ -49,4 +49,9 @@ public class TimeDeposit {
     public void setBalance(Double balance) {
         this.balance = balance;
     }
+
+    public List<Withdrawal> getWithdrawals() {
+        return withdrawals;
+    }
+
 }
